@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-600">
+  <div class="bg-gray-600 relative">
         <div>
           <nav
       class="relative flex w-full flex-wrap items-center justify-between bg-neutral-900 py-3 text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start"
@@ -72,25 +72,31 @@
        </div>
       </div>
     </nav> 
-    
-    
-
-    
     </div>
 
-
-
     
-    
+
     <div >
      <div class="bg-gray-600 text-white w-1/2 m-auto mt-12 border-x-1 border-b-1 border-black rounded-lg">
         <div class="text-center py-4"> 
           <p class="text-xl" v-if="openTodos.length > 0"> Open ToDos: {{ openTodos.length }}</p>
           <p class="text-xl" v-else> No Todos, Congratulation </p>
           
-          <div class="mt-2 py-1 px-1 space-y-4">
+          <div class="mt-2 py-1 px-1 space-y-4 ">
+
+      <!-- <div class="animate-bounce mb-3 items-center rounded-lg bg-warning-100 text-xl mt-4 py-2 text-warning-800 data-[te-alert-show]:inline-flex bg-red-500"  v-if="errorVis">
+        {{ error }}
+        <button type="button" class="ml-auto box-content rounded-none border-none p-1 text-warning-900 opacity-50 hover:text-warning-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none" data-te-alert-dismiss aria-label="Close" @click="closeMsg">
+          <span class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+              <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </button>
+      </div> -->
+
             <div
-                class="mb-3 hidden w-full items-center rounded-lg bg-warning-100 text-xl mt-4 py-2 text-warning-800 data-[te-alert-show]:inline-flex bg-red-500"
+                class="animate-bounce mb-3 hidden w-full items-center rounded-lg bg-warning-100 text-xl mt-4 py-2 text-warning-800 data-[te-alert-show]:inline-flex bg-red-500"
                 role="alert"
                 data-te-alert-init
                 data-te-alert-show 
@@ -118,21 +124,25 @@
                 </button>
             </div>
 
-            <input type="text" class="py-2 w-2/3 text-black  border-black rounded-l-lg" v-model="newTodo"/>
-            <button 
-            type="button"
-            data-te-ripple-init
-            data-te-ripple-color="light" 
-            class="bg-black py-2 w-1/3  border-black rounded-r-lg font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg" @click="addToDo">Add Todo</button>
+           <div class="flex">
+    <input type="text" class="py-2 w-2/3 text-black border-black rounded-l-lg h-10" v-model="newTodo"/>
+    <button type="button" data-te-ripple-init data-te-ripple-color="light" 
+            class="bg-black py-2 w-1/3 border-black rounded-r-lg font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg h-10"
+            @click="addToDo">Add Todo
+    </button>
+  </div>
           </div>  
         </div>
+      
         <div v-for="(todo, index) in todos" :key="todo.todo" class="py-0.5 px-0.5"> 
-          <ToDo 
-          :todoprop="todo" 
-          :todoindex="index" 
-          @toggledone-index="toggleDone" 
-          @removetodo-index="deleteTodo"/>
-        </div>  
+            <ToDo 
+            :todoprop="todo" 
+            :todoindex="index" 
+            @toggledone-index="toggleDone" 
+            @removetodo-index="deleteTodo"          
+            />
+          </div>  
+       
       </div>
 
     </div>
