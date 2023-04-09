@@ -26,4 +26,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Simple ToDo Application in Vue.js
 
-![My Image](Simple-todo-app.jpg)
+![My Image](pic/Simple-todo-app.jpg)
